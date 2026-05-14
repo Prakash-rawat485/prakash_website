@@ -1,1 +1,27 @@
 
+[
+  {
+    "name": "Bank Customer Churn Analysis",
+    "description": "Exploratory Data Analysis using Python to identify high-risk churn factors. Discovered key correlations between revolving balances, transaction frequency, and customer attrition.",
+    "link": "https://github.com/Prakash-rawat485/projects",
+    "tags": ["Python", "EDA", "Matplotlib", "Pandas"]
+  },
+  {
+    "name": "Netflix Content Dashboard",
+    "description": "A Power BI visualization project analyzing Netflix's global content library, comparing movies vs. TV shows and identifying top-performing genres.",
+    "link": "https://github.com/Prakash-rawat485/projects",
+    "tags": ["Power BI", "Data Visualization", "DAX"]
+  },
+  {
+    "name": "Vehicle Depreciation Analysis",
+    "description": "Used Python to analyze vehicle pricing trends, identifying five distinct price decay patterns and specific mileage thresholds that impact resale value.",
+    "link": "https://github.com/Prakash-rawat485/projects",
+    "tags": ["Python", "Seaborn", "Predictive Analysis"]
+  },
+  {
+    "name": "Hospitality Revenue Performance",
+    "description": "Developed a professional dark-themed Power BI dashboard to track hospitality KPIs including RevPAR, ADR, and occupancy rates.",
+    "link": "https://github.com/Prakash-rawat485/projects",
+    "tags": ["Power BI", "UI/UX", "Business Intelligence"]
+  }
+]
