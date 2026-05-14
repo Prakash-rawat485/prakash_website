@@ -7,137 +7,211 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .card-shadow { 
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04); 
-            border: 1px solid #f1f5f9; 
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --primary: #059669;
+            --dark: #0f172a;
         }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            scroll-behavior: smooth;
+            background-color: #f8fafc;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top right, #ecfdf5, transparent);
+        }
+
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #f1f5f9;
+        }
+
         .project-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #10b981;
+        }
+
+        .skill-badge {
+            background: white;
+            border: 1px solid #e2e8f0;
             transition: all 0.3s ease;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+        }
+
+        .skill-badge:hover {
+            border-color: #10b981;
+            color: #059669;
+            transform: scale(1.05);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="text-slate-900">
 
-    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 glass-nav">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-xl font-bold tracking-tight text-emerald-700">&lt;PR /&gt; Prakash Rawat</h1>
-            <div class="space-x-8 hidden md:flex font-medium text-slate-600">
+            <h1 class="text-2xl font-extrabold tracking-tight text-slate-900">
+                <span class="text-emerald-600">Prakash</span>Rawat.
+            </h1>
+            <div class="space-x-8 hidden md:flex font-semibold text-slate-600">
                 <a href="#about" class="hover:text-emerald-600 transition">About</a>
-                <a href="#skills" class="hover:text-emerald-600 transition">Skills</a>
                 <a href="#projects" class="hover:text-emerald-600 transition">Projects</a>
-                <a href="#contact" class="hover:text-emerald-600 transition">Contact</a>
+                <a href="#contact" class="hover:text-emerald-600 transition text-emerald-600">Hire Me</a>
             </div>
         </nav>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 py-12">
+    <main class="hero-gradient">
         <!-- Hero Section -->
-        <section id="about" class="mb-24 py-10">
-            <div class="grid md:grid-cols-3 gap-12 items-center">
-                <div class="md:col-span-2">
-                    <span class="inline-block px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-sm font-semibold mb-4">
-                        Available for Data Roles
-                    </span>
-                    <h2 class="text-6xl font-extrabold text-slate-900 mb-6 tracking-tight">Data Science <span class="text-emerald-600">Specialist.</span></h2>
-                    <p class="text-xl text-slate-600 leading-relaxed mb-8 max-w-2xl">
-                        I transform complex datasets into actionable insights. Currently building an end-to-end portfolio focused on <b>Exploratory Data Analysis</b> and <b>Statistical Modeling</b>.
+        <section id="about" class="max-w-7xl mx-auto px-6 py-20">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-6">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        Available for Data Opportunities
+                    </div>
+                    <h2 class="text-7xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
+                        Solving business problems with <span class="text-emerald-600">Data.</span>
+                    </h2>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-10 max-w-lg">
+                        Data Science specialist focused on <span class="font-semibold text-slate-900">EDA</span>, <span class="font-semibold text-slate-900">Churn Prediction</span>, and <span class="font-semibold text-slate-900">Market Analysis</span>. Transforming raw numbers into strategic growth.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="#projects" class="px-8 py-3 bg-slate-900 text-white rounded-lg shadow-lg hover:bg-slate-800 transition font-medium">View Portfolio</a>
-                        <a href="mailto:pr400733@gmail.com" class="px-8 py-3 border border-slate-300 bg-white rounded-lg hover:bg-slate-50 transition font-medium">Get in Touch</a>
+                        <a href="#projects" class="px-8 py-4 bg-slate-900 text-white rounded-2xl shadow-xl hover:bg-slate-800 transition-all font-bold flex items-center gap-2">
+                            View Work <i data-lucide="arrow-down" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/prakash-rawat-5b169b331/" target="_blank" class="px-8 py-4 bg-white border border-slate-200 text-slate-900 rounded-2xl hover:bg-slate-50 transition-all font-bold flex items-center gap-2">
+                            <i data-lucide="linkedin" class="w-5 h-5 text-blue-600"></i> LinkedIn
+                        </a>
                     </div>
                 </div>
-                <div class="relative flex justify-center">
-                    <div class="absolute inset-0 bg-emerald-200 rounded-2xl rotate-3 scale-95 opacity-50"></div>
-                    <img src="image.jpg" alt="Prakash Rawat" class="relative w-72 h-72 rounded-2xl object-cover shadow-2xl border border-white">
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-emerald-100 rounded-[3rem] -rotate-6 scale-95 opacity-50"></div>
+                    <img src="image.jpg" alt="Prakash Rawat" class="relative w-full max-w-md mx-auto rounded-[2.5rem] shadow-2xl border-8 border-white">
                 </div>
             </div>
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="mb-24">
-            <div class="flex justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-4xl font-bold text-slate-900 mb-2">Selected Projects</h2>
-                    <p class="text-slate-500">A collection of my recent data analysis work</p>
-                </div>
+        <section id="projects" class="max-w-7xl mx-auto px-6 py-24">
+            <div class="mb-16">
+                <h2 class="text-4xl font-black text-slate-900 mb-4">Case Studies</h2>
+                <div class="h-1.5 w-20 bg-emerald-500 rounded-full"></div>
             </div>
-            <div id="projects-container" class="grid md:grid-cols-2 gap-8">
-                <div class="animate-pulse text-slate-400 py-20 text-center col-span-full font-medium">
-                    Initializing Data...
-                </div>
+            
+            <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects injected by JS -->
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="bg-slate-900 rounded-3xl p-12 text-center text-white mb-12 shadow-2xl">
-            <h2 class="text-4xl font-bold mb-6">Let's work together.</h2>
-            <div class="flex flex-wrap justify-center gap-6">
-                <a href="mailto:pr400733@gmail.com" class="flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 rounded-xl transition font-semibold">
-                    <i data-lucide="mail" class="w-5 h-5"></i> pr400733@gmail.com
-                </a>
-                <a href="https://github.com/Prakash-rawat485" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl transition border border-white/10">
-                    <i data-lucide="github" class="w-5 h-5"></i> GitHub
-                </a>
+        <section id="contact" class="max-w-7xl mx-auto px-6 py-24">
+            <div class="bg-slate-900 rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-64 h-64 bg-emerald-500/10 blur-[100px]"></div>
+                <h2 class="text-5xl font-black mb-8 relative z-10">Start a Data Project.</h2>
+                <p class="text-slate-400 mb-12 max-w-2xl mx-auto text-xl relative z-10">
+                    Ready to turn your data into insights? Connect with me directly through any of these platforms.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-4 relative z-10">
+                    <a href="mailto:pr400733@gmail.com" class="flex items-center gap-3 px-8 py-4 bg-emerald-600 hover:bg-emerald-500 rounded-2xl transition-all font-bold">
+                        <i data-lucide="mail"></i> pr400733@gmail.com
+                    </a>
+                    <a href="tel:+918279338375" class="flex items-center gap-3 px-8 py-4 bg-white/10 hover:bg-white/20 rounded-2xl transition-all border border-white/10 font-bold">
+                        <i data-lucide="phone"></i> +91 8279338375
+                    </a>
+                    <a href="https://www.linkedin.com/in/prakash-rawat-5b169b331/" target="_blank" class="flex items-center gap-3 px-8 py-4 bg-[#0077b5] hover:opacity-90 rounded-2xl transition-all font-bold">
+                        <i data-lucide="linkedin"></i> LinkedIn
+                    </a>
+                </div>
             </div>
         </section>
     </main>
 
+    <footer class="text-center py-12 text-slate-400 text-sm font-medium">
+        &copy; 2026 Prakash Rawat &bull; Data Science Portfolio
+    </footer>
+
     <script>
-        // Use an async function for better error handling
-        async function loadProjects() {
-            const container = document.getElementById('projects-container');
-            
-            try {
-                // We use './projects.json' to ensure it looks in the same folder as the URL
-                const response = await fetch('./projects.json');
-                
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const data = await response.json();
-                
-                container.innerHTML = data.map(p => `
-                    <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col project-card">
-                        <div class="p-8 flex-grow">
-                            <div class="flex justify-between items-start mb-4">
-                                <h3 class="text-2xl font-bold text-slate-900">${p.name}</h3>
-                                <i data-lucide="arrow-up-right" class="text-slate-300 w-6 h-6"></i>
-                            </div>
-                            <p class="text-slate-600 mb-6 leading-relaxed">${p.description}</p>
-                            <div class="flex flex-wrap gap-2">
-                                ${p.tags.map(tag => `<span class="px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold rounded-md">${tag}</span>`).join('')}
-                            </div>
-                        </div>
-                        <div class="px-8 py-5 bg-slate-50 border-t border-slate-100">
-                            <a href="${p.link}" target="_blank" class="text-emerald-600 font-bold inline-flex items-center hover:text-emerald-700 transition">
-                                Source Code <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                `).join('');
-                
-                // Initialize icons after HTML is added
-                lucide.createIcons();
-                
-            } catch (err) {
-                console.error("Detailed Fetch Error:", err);
-                container.innerHTML = `
-                    <div class="text-center py-10 col-span-full">
-                        <p class="text-red-500 font-bold text-xl mb-2">Error connecting to projects.json</p>
-                        <p class="text-slate-500">Ensure the file is in your main GitHub folder and named exactly <code class="bg-slate-200 px-1 rounded">projects.json</code></p>
-                    </div>
-                `;
+        const projectData = [
+            {
+                name: "Bank Churn Insights",
+                desc: "High-level statistical analysis of credit card customer attrition using financial behavioral patterns.",
+                tags: ["Python", "Finance", "EDA"],
+                link: "https://github.com/Prakash-rawat485/projects/tree/main/bank%20churn%20eda"
+            },
+            {
+                name: "Used Car Valuation",
+                desc: "Predictive study on vehicle depreciation markers and resale value optimization.",
+                tags: ["Python", "Automotive", "Regression"],
+                link: "https://github.com/Prakash-rawat485/projects/tree/main/Used_car_price_analysis"
+            },
+            {
+                name: "Zomato EDA",
+                desc: "Geospatial and sentiment analysis of restaurant performances in food-tech sectors.",
+                tags: ["Python", "Visualization", "Seaborn"],
+                link: "https://github.com/Prakash-rawat485/projects/tree/main/Zomato-EDA"
+            },
+            {
+                name: "Telecom Retention",
+                desc: "Identifying key risk factors in customer lifecycle for the telecommunication industry.",
+                tags: ["Python", "Churn", "Strategy"],
+                link: "https://github.com/Prakash-rawat485/projects/tree/main/telecome_churn"
+            },
+            {
+                name: "Diwali Sales Trend",
+                desc: "Market behavior analysis during high-volume festive seasons to optimize inventory.",
+                tags: ["Python", "Pandas", "Retail"],
+                link: "https://github.com/Prakash-rawat485/projects/tree/main/Diwali_sales_analysis"
+            },
+            {
+                name: "E-Commerce Analysis",
+                desc: "Deep dive into retail datasets to improve user engagement and sales conversion.",
+                tags: ["Python", "Marketing", "EDA"],
+                link: "https://github.com/Prakash-rawat485/projects/tree/main/ecommerce_churn"
             }
+        ];
+
+        function renderProjects() {
+            const container = document.getElementById('projects-container');
+            container.innerHTML = projectData.map(p => `
+                <div class="bg-white rounded-[2rem] p-8 flex flex-col project-card">
+                    <div class="mb-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-xl font-bold text-slate-900">${p.name}</h3>
+                            <div class="p-2 bg-slate-50 rounded-lg group-hover:bg-emerald-50 transition-colors">
+                                <i data-lucide="bar-chart-3" class="w-5 h-5 text-emerald-600"></i>
+                            </div>
+                        </div>
+                        <p class="text-slate-500 text-sm leading-relaxed">${p.desc}</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-8">
+                        ${p.tags.map(t => `<span class="px-3 py-1 bg-slate-50 text-slate-600 text-[10px] font-black uppercase tracking-widest rounded-full border border-slate-100">${t}</span>`).join('')}
+                    </div>
+                    <div class="mt-auto pt-6 border-t border-slate-50">
+                        <a href="${p.link}" target="_blank" class="text-sm font-bold text-slate-900 flex items-center gap-2 hover:text-emerald-600 transition-colors">
+                            Explore Project <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+            lucide.createIcons();
         }
 
-        // Run the function
-        loadProjects();
+        renderProjects();
     </script>
 </body>
 </html>
