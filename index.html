@@ -13,7 +13,6 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04); 
             border: 1px solid #f1f5f9; 
         }
-        /* Custom hover effect for cards */
         .project-card:hover {
             transform: translateY(-4px);
             transition: all 0.3s ease;
@@ -23,7 +22,6 @@
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-    <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
         <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-xl font-bold tracking-tight text-emerald-700">&lt;PR /&gt; Prakash Rawat</h1>
@@ -37,7 +35,6 @@
     </header>
 
     <main class="max-w-7xl mx-auto px-6 py-12">
-        
         <!-- Hero Section -->
         <section id="about" class="mb-24 py-10">
             <div class="grid md:grid-cols-3 gap-12 items-center">
@@ -55,44 +52,8 @@
                     </div>
                 </div>
                 <div class="relative flex justify-center">
-                    <!-- Decorative background for image -->
                     <div class="absolute inset-0 bg-emerald-200 rounded-2xl rotate-3 scale-95 opacity-50"></div>
                     <img src="image.jpg" alt="Prakash Rawat" class="relative w-72 h-72 rounded-2xl object-cover shadow-2xl border border-white">
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="mb-24 bg-white p-12 rounded-3xl card-shadow">
-            <h2 class="text-3xl font-bold text-slate-900 mb-12 text-center">Technical Toolbox</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="space-y-3">
-                    <div class="w-12 h-12 bg-emerald-50 rounded-lg flex items-center justify-center text-emerald-600">
-                        <i data-lucide="terminal"></i>
-                    </div>
-                    <h3 class="font-bold">Languages</h3>
-                    <p class="text-sm text-slate-500">Python, SQL, R</p>
-                </div>
-                <div class="space-y-3">
-                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600">
-                        <i data-lucide="layers"></i>
-                    </div>
-                    <h3 class="font-bold">Libraries</h3>
-                    <p class="text-sm text-slate-500">Pandas, NumPy, Scikit-learn</p>
-                </div>
-                <div class="space-y-3">
-                    <div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600">
-                        <i data-lucide="layout"></i>
-                    </div>
-                    <h3 class="font-bold">Visualization</h3>
-                    <p class="text-sm text-slate-500">Power BI, Matplotlib, Seaborn</p>
-                </div>
-                <div class="space-y-3">
-                    <div class="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600">
-                        <i data-lucide="database"></i>
-                    </div>
-                    <h3 class="font-bold">Database</h3>
-                    <p class="text-sm text-slate-500">MySQL, PostgreSQL, MongoDB</p>
                 </div>
             </div>
         </section>
@@ -106,17 +67,15 @@
                 </div>
             </div>
             <div id="projects-container" class="grid md:grid-cols-2 gap-8">
-                <!-- Data loads here -->
-                <div class="animate-pulse text-slate-400 py-20 text-center col-span-full">Syncing projects...</div>
+                <div class="animate-pulse text-slate-400 py-20 text-center col-span-full font-medium">
+                    Initializing Data...
+                </div>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="bg-slate-900 rounded-3xl p-12 text-center text-white mb-12 shadow-2xl">
             <h2 class="text-4xl font-bold mb-6">Let's work together.</h2>
-            <p class="text-slate-400 mb-10 max-w-xl mx-auto text-lg">
-                I'm currently looking for new opportunities. Whether you have a question or just want to say hi, my inbox is always open.
-            </p>
             <div class="flex flex-wrap justify-center gap-6">
                 <a href="mailto:pr400733@gmail.com" class="flex items-center gap-2 px-6 py-3 bg-emerald-600 hover:bg-emerald-500 rounded-xl transition font-semibold">
                     <i data-lucide="mail" class="w-5 h-5"></i> pr400733@gmail.com
@@ -124,25 +83,25 @@
                 <a href="https://github.com/Prakash-rawat485" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl transition border border-white/10">
                     <i data-lucide="github" class="w-5 h-5"></i> GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/prakash-rawat-5b169b331/" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-xl transition border border-white/10">
-                    <i data-lucide="linkedin" class="w-5 h-5"></i> LinkedIn
-                </a>
             </div>
         </section>
-
     </main>
 
-    <footer class="text-center pb-12 text-slate-400 text-sm">
-        &copy; 2026 Prakash Rawat. Built with Tailwind CSS & Lucide Icons.
-    </footer>
-
     <script>
-        lucide.createIcons();
-        
-        fetch('projects.json')
-            .then(res => res.json())
-            .then(data => {
-                const container = document.getElementById('projects-container');
+        // Use an async function for better error handling
+        async function loadProjects() {
+            const container = document.getElementById('projects-container');
+            
+            try {
+                // We use './projects.json' to ensure it looks in the same folder as the URL
+                const response = await fetch('./projects.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
                 container.innerHTML = data.map(p => `
                     <div class="bg-white rounded-2xl card-shadow overflow-hidden flex flex-col project-card">
                         <div class="p-8 flex-grow">
@@ -162,11 +121,23 @@
                         </div>
                     </div>
                 `).join('');
+                
+                // Initialize icons after HTML is added
                 lucide.createIcons();
-            })
-            .catch(err => {
-                document.getElementById('projects-container').innerHTML = "<p class='text-red-500 text-center py-10 col-span-full font-medium'>Error connecting to projects.json</p>";
-            });
+                
+            } catch (err) {
+                console.error("Detailed Fetch Error:", err);
+                container.innerHTML = `
+                    <div class="text-center py-10 col-span-full">
+                        <p class="text-red-500 font-bold text-xl mb-2">Error connecting to projects.json</p>
+                        <p class="text-slate-500">Ensure the file is in your main GitHub folder and named exactly <code class="bg-slate-200 px-1 rounded">projects.json</code></p>
+                    </div>
+                `;
+            }
+        }
+
+        // Run the function
+        loadProjects();
     </script>
 </body>
 </html>
